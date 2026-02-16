@@ -1,0 +1,92 @@
+:root{
+  --bg-1:#e6f9ec;
+  --card:#ffffff;
+  --accent:#21a54d;
+  --muted:#94a3b8;
+  --danger:#ef4444;
+  --glass: rgba(255,255,255,0.6);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg, #9fb3a5 0%, #d3f1d8 100%);
+  display:flex;align-items:center;justify-content:center;
+  padding:48px 20px;
+  color:#0f172a;
+}
+
+.app-wrap{width:100%;max-width:1100px;padding:0 28px}
+.card{
+  width: min(100%, 980px);
+  margin: 0 auto;
+  background:var(--card);
+  border-radius:12px;
+  box-shadow:0 12px 30px rgba(16,24,40,0.08), 0 2px 6px rgba(2,6,23,0.04);
+  padding:28px 40px;
+  position:relative;
+  z-index:10; /* keep card above the snowfall */
+}
+.card-header{margin-bottom:14px;text-align:justify-content-center;display:flex;flex-direction:column;align-items:center}
+.card-header h1{font-size:22px;margin:0;font-weight:700}
+.subtitle{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+.task-form{display:flex;gap:10px;margin-top:14px}
+.task-form input{
+  flex:1;padding:12px 14px;border-radius:10px;border:1px solid #e6eef8;background:#fbfdff;
+  outline:none;font-size:14px;color:inherit;transition:box-shadow .15s,border-color .15s;
+}
+.task-form input:focus{box-shadow:0 6px 20px rgba(34,197,94,0.08);border-color:var(--accent)}
+.task-form button{
+  background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;min-width:72px;
+  box-shadow:0 6px 14px rgba(34,197,94,0.12);transition:transform .14s,box-shadow .14s,opacity .14s,filter .12s;
+}
+.task-form button:hover{
+
+  box-shadow:0 8px 24px rgba(34,197,94,0.16);
+  background-color: #969696;
+}
+.task-form button:active{transform:translateY(1px)}
+
+.lists{margin-top:18px}
+.list{margin-top:8px}
+.list h2{font-size:18px;margin:6px 0 8px}
+.task-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.empty{color:var(--muted);font-size:13px;margin:10px 0 0}
+
+.task-item{
+  display:flex;align-items:center;gap:12px;background: linear-gradient(180deg,#ffffff,#fbfdff);
+  padding:12px;border-radius:10px;border:1px solid rgba(15,23,42,0.03);
+  box-shadow:0 4px 10px rgba(2,6,23,0.04);transition:transform .12s,box-shadow .12s,opacity .12s;
+}
+.task-item:hover{transform:translateY(-3px)}
+.task-left{display:flex;align-items:center;gap:12px;flex:1}
+.check-btn{width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid rgba(15,23,42,0.06);background:#f1f9f2;transition:all .12s}
+.check-btn[data-checked="true"]{background:var(--accent);box-shadow:0 6px 18px rgba(34,197,94,0.14);border-color:transparent}
+.task-text{font-size:15px;color:inherit}
+.task-text.completed{color:var(--muted);text-decoration:line-through}
+.task-actions{display:flex;align-items:center;gap:8px}
+.icon-btn{background:transparent;border:none;cursor:pointer;padding:6px;border-radius:8px}
+.icon-btn.delete{background:rgba(239,68,68,0.08)}
+.icon-btn.delete:hover{background:rgba(239,68,68,0.12)}
+
+.credits{margin-top:12px;text-align:center;color:var(--muted);font-size:12px}
+
+@media (max-width:1024px){
+  .app-wrap{padding:0 20px}
+  .card{width:100%;padding:20px}
+}
+@media (max-width:440px){.card{padding:16px}}
+
+/* Snowfall canvas styling */
+#snow-canvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:0;
+  mix-blend-mode:normal;
+  opacity:0.95;
+}
